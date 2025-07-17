@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Oxanium } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const oxaniumSans = Oxanium({
+  variable: "--font-oxanium-sans",
   subsets: ["latin"],
 });
 
@@ -27,7 +22,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${oxaniumSans.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
