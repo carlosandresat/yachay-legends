@@ -1,15 +1,13 @@
+import { ArenaGroupsStandings } from "@/components/arena-groups-standings"
 import { MainHeader } from "@/components/main-header"
-import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <MainHeader />
       <main className="container mx-auto px-4 py-8">
-        <Button size="lg">Grupo A</Button>
-        <Button size="lg">Grupo B</Button>
-        <Button size="lg">Grupo C</Button>
-        <Button size="lg">Grupo D</Button>
+        <h1 className="text-2xl font-bold mb-4 text-center">Resultados del Torneo de Arena</h1>
+        <ArenaGroupsStandings />
       </main>
     </div>
   )
