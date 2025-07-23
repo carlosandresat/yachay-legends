@@ -4,6 +4,7 @@ import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import { useState } from "react";
 
 import { TableCell, TableRow } from "@/components/ui/table";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function TeamRow() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +19,53 @@ export function TeamRow() {
         <TableCell colSpan={2}>
           <Collapsible open={isOpen} onOpenChange={setIsOpen}>
             <CollapsibleContent>
-              <p className="text-sm text-muted-foreground text-wrap">
-                Detalles del equipo: Aquí puedes agregar más información sobre
-                el equipo, como sus jugadores, estadísticas, etc.
-              </p>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Match #1</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-wrap">
+                    Aquí van los detalles del equipo, como jugadores,
+                    estadísticas, etc.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Match #2</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-wrap">
+                    Aquí van los detalles del equipo, como jugadores,
+                    estadísticas, etc.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Match #3</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-wrap">
+                    Aquí van los detalles del equipo, como jugadores,
+                    estadísticas, etc.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Match #4</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-wrap">
+                    Aquí van los detalles del equipo, como jugadores,
+                    estadísticas, etc.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Match #5</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-wrap">
+                    Aquí van los detalles del equipo, como jugadores,
+                    estadísticas, etc.
+                  </CardContent>
+                </Card>
+              </div>
             </CollapsibleContent>
           </Collapsible>
         </TableCell>
