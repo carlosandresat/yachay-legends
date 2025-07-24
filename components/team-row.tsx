@@ -6,6 +6,7 @@ import { useState } from "react";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 export function TeamRow() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,10 @@ export function TeamRow() {
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-sm">Match #1</CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-sm">Match #1</CardTitle>
+                      <Badge className="font-bold">1er lugar</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-evenly">
@@ -52,7 +56,10 @@ export function TeamRow() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-sm">Match #2</CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-sm">Match #2</CardTitle>
+                      <Badge className="font-bold">1er lugar</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-evenly">
@@ -81,7 +88,10 @@ export function TeamRow() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-sm">Match #3</CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-sm">Match #3</CardTitle>
+                      <Badge className="font-bold">1er lugar</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-evenly">
@@ -110,7 +120,10 @@ export function TeamRow() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-sm">Match #4</CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-sm">Match #4</CardTitle>
+                      <Badge className="font-bold">1er lugar</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-evenly">
@@ -139,7 +152,10 @@ export function TeamRow() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-sm">Match #5</CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-sm">Match #5</CardTitle>
+                      <Badge className="font-bold">1er lugar</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-evenly">
