@@ -14,11 +14,12 @@ export function TeamRow() {
   return (
     <>
       <TableRow onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
+        <TableCell className="text-center">1</TableCell>
         <TableCell>Equipo 2</TableCell>
         <TableCell className="text-center">8</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell colSpan={2}>
+        <TableCell colSpan={3}>
           <Collapsible open={isOpen} onOpenChange={setIsOpen}>
             <CollapsibleContent>
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

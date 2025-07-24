@@ -26,6 +26,7 @@ export function ArenaGroupsStandings() {
           </TableCaption>
           <TableHeader>
             <TableRow>
+              <TableHead>#</TableHead>
               <TableHead className="w-full">Equipo</TableHead>
               <TableHead>Puntos</TableHead>
             </TableRow>
