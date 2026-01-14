@@ -9,109 +9,65 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TeamRow } from "@/components/team-row";
+import { GROUPS, TEAMS, getTeamStats } from "@/lib/tournament-db";
 
 export function ArenaGroupsStandings() {
+  const groupKeys = Object.keys(GROUPS);
+
   return (
-    <Tabs defaultValue="group-a" className="w-full">
-      <TabsList>
-        <TabsTrigger value="group-a">Grupo A</TabsTrigger>
-        <TabsTrigger value="group-b">Grupo B</TabsTrigger>
-        <TabsTrigger value="group-c">Grupo C</TabsTrigger>
-        <TabsTrigger value="group-d">Grupo D</TabsTrigger>
+    <Tabs defaultValue={groupKeys[0]} className="w-full">
+      <TabsList className="w-full">
+        {groupKeys.map((key) => (
+          <TabsTrigger key={key} value={key}>{GROUPS[key].name}</TabsTrigger>
+        ))}
       </TabsList>
-      <TabsContent value="group-a">
-        <Table>
-          <TableCaption>
-            Click en cada equipo para ver más detalles
-          </TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead>#</TableHead>
-              <TableHead className="w-full">Equipo</TableHead>
-              <TableHead>Puntos</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-          </TableBody>
-        </Table>
-      </TabsContent>
-      <TabsContent value="group-b">
-        <Table>
-          <TableCaption>
-            Click en cada equipo para ver más detalles
-          </TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-full">Equipo</TableHead>
-              <TableHead>Puntos</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-          </TableBody>
-        </Table>
-      </TabsContent>
-      <TabsContent value="group-c">
-        <Table>
-          <TableCaption>
-            Click en cada equipo para ver más detalles
-          </TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-full">Equipo</TableHead>
-              <TableHead>Puntos</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-          </TableBody>
-        </Table>
-      </TabsContent>
-      <TabsContent value="group-d">
-        <Table>
-          <TableCaption>
-            Click en cada equipo para ver más detalles
-          </TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-full">Equipo</TableHead>
-              <TableHead>Puntos</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-            <TeamRow />
-          </TableBody>
-        </Table>
-      </TabsContent>
+
+      {groupKeys.map((key) => {
+        const group = GROUPS[key];
+        // Calculate stats for all teams in the group
+        const teamStats = group.teamIds.map(teamId => {
+          const team = TEAMS[teamId];
+          const stats = getTeamStats(group.id, teamId);
+          return { team, stats };
+        });
+
+        // Sort by points descending
+        teamStats.sort((a, b) => b.stats.points - a.stats.points);
+
+        return (
+          <TabsContent key={key} value={key}>
+            <Table>
+              <TableCaption>
+                Details for {group.name} - Top 4 advance
+              </TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[50px] text-center">#</TableHead>
+                  <TableHead className="w-full">Team</TableHead>
+                  <TableHead className="text-center">Points</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {teamStats.map((item, index) => (
+                  <TeamRow
+                    key={item.team.id}
+                    rank={index + 1}
+                    team={item.team}
+                    stats={item.stats}
+                  />
+                ))}
+                {teamStats.length === 0 && (
+                  <TableRow>
+                    <TableCell colSpan={3} className="text-center text-muted-foreground h-24">
+                      No teams in this group yet.
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TabsContent>
+        );
+      })}
     </Tabs>
   );
 }

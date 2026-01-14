@@ -7,182 +7,88 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Team } from "@/lib/tournament-db";
 
-export function TeamRow() {
+type TeamStats = {
+  points: number;
+  wins: number;
+  matchesPlayed: number;
+  history: {
+    gameNumber: number;
+    placement: number;
+    champions?: [string, string];
+  }[];
+};
+
+interface TeamRowProps {
+  rank: number;
+  team: Team;
+  stats: TeamStats;
+}
+
+export function TeamRow({ rank, team, stats }: TeamRowProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <TableRow onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
-        <TableCell className="text-center">1</TableCell>
-        <TableCell>Equipo 2</TableCell>
-        <TableCell className="text-center">8</TableCell>
+      <TableRow onClick={() => setIsOpen(!isOpen)} className="cursor-pointer hover:bg-muted/50 transition-colors">
+        <TableCell className="text-center font-bold">{rank}</TableCell>
+        <TableCell>
+          <div className="flex flex-col">
+            <span className="font-semibold">{team.name}</span>
+            <span className="text-xs text-muted-foreground">{team.members.join(" & ")}</span>
+          </div>
+        </TableCell>
+        <TableCell className="text-center text-lg font-bold">{stats.points}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell colSpan={3}>
+        <TableCell colSpan={3} className="p-0 border-none">
           <Collapsible open={isOpen} onOpenChange={setIsOpen}>
             <CollapsibleContent>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-sm">Match #1</CardTitle>
-                      <Badge className="font-bold">1er lugar</Badge>
+              <div className="p-4 bg-muted/20">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                  {stats.history.map((match) => (
+                    <Card key={match.gameNumber} className="bg-card">
+                      <CardHeader className="p-3 pb-2">
+                        <div className="flex items-center justify-between">
+                          <CardTitle className="text-sm">Game #{match.gameNumber}</CardTitle>
+                          <Badge variant={match.placement === 1 ? "default" : "secondary"}>
+                            #{match.placement} Place
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-3 pt-0">
+                        {match.champions ? (
+                          <div className="flex items-center justify-evenly mt-2">
+                            <div className="flex flex-col items-center">
+                              <Avatar className="size-8">
+                                <AvatarImage src={`https://ddragon.leagueoflegends.com/cdn/15.1.1/img/champion/${match.champions[0]}.png`} />
+                                <AvatarFallback>?</AvatarFallback>
+                              </Avatar>
+                              <span className="text-[10px] truncate max-w-[50px]">{match.champions[0]}</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                              <Avatar className="size-8">
+                                <AvatarImage src={`https://ddragon.leagueoflegends.com/cdn/15.1.1/img/champion/${match.champions[1]}.png`} />
+                                <AvatarFallback>?</AvatarFallback>
+                              </Avatar>
+                              <span className="text-[10px] truncate max-w-[50px]">{match.champions[1]}</span>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="text-xs text-muted-foreground text-center mt-2">
+                            No champion data
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))}
+                  {stats.history.length === 0 && (
+                    <div className="col-span-full text-center text-muted-foreground text-sm py-4">
+                      No matches played yet.
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-evenly">
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Teemo.png"
-                            alt="Player1 Champion"
-                          />
-                          <AvatarFallback>P1</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 1</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Ashe.png"
-                            alt="Player2 Champion"
-                          />
-                          <AvatarFallback>P2</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 2</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-sm">Match #2</CardTitle>
-                      <Badge className="font-bold">1er lugar</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-evenly">
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Teemo.png"
-                            alt="Player1 Champion"
-                          />
-                          <AvatarFallback>P1</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 1</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Ashe.png"
-                            alt="Player2 Champion"
-                          />
-                          <AvatarFallback>P2</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 2</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-sm">Match #3</CardTitle>
-                      <Badge className="font-bold">1er lugar</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-evenly">
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Teemo.png"
-                            alt="Player1 Champion"
-                          />
-                          <AvatarFallback>P1</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 1</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Ashe.png"
-                            alt="Player2 Champion"
-                          />
-                          <AvatarFallback>P2</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 2</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-sm">Match #4</CardTitle>
-                      <Badge className="font-bold">1er lugar</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-evenly">
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Teemo.png"
-                            alt="Player1 Champion"
-                          />
-                          <AvatarFallback>P1</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 1</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Ashe.png"
-                            alt="Player2 Champion"
-                          />
-                          <AvatarFallback>P2</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 2</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-sm">Match #5</CardTitle>
-                      <Badge className="font-bold">1er lugar</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-evenly">
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Teemo.png"
-                            alt="Player1 Champion"
-                          />
-                          <AvatarFallback>P1</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 1</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Avatar className="size-10">
-                          <AvatarImage
-                            src="https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/Ashe.png"
-                            alt="Player2 Champion"
-                          />
-                          <AvatarFallback>P2</AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">Jugador 2</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  )}
+                </div>
               </div>
             </CollapsibleContent>
           </Collapsible>
