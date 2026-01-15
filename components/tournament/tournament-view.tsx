@@ -11,7 +11,7 @@ export function TournamentView() {
 
     return (
         <Tabs defaultValue={phases[0].toString()} className="w-full">
-            <div className="flex items-center justify-between mb-6 gap-4">
+            <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
                 <TabsList className="w-full h-auto flex-wrap justify-start">
                     {phases.map((phase) => (
                         <TabsTrigger key={phase} value={phase.toString()} className="py-2">
