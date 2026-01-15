@@ -1,4 +1,4 @@
-import { ArenaGroupsStandings } from "@/components/arena-groups-standings"
+import { TournamentView } from "@/components/tournament/tournament-view"
 import { MainHeader } from "@/components/main-header"
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
       <MainHeader />
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-4 text-center">Resultados del Torneo de Arena</h1>
-        <ArenaGroupsStandings />
+        <TournamentView />
       </main>
     </div>
   )
