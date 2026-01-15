@@ -80,6 +80,52 @@ export const TEAMS: Record<string, Team> = {
     't32': { id: 't32', name: 'Gamers2', members: ['BrokenBlade', 'Yike'] },
 };
 
+// Helper to generate a full match with random placements and champions
+const CHAMPIONS = [
+    'Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Aphelios', 'Ashe', 'AurelionSol',
+    'Azir', 'Bard', 'Belveth', 'Blitzcrank', 'Brand', 'Braum', 'Briar', 'Caitlyn', 'Camille', 'Cassiopeia',
+    'Chogath', 'Corki', 'Darius', 'Diana', 'Draven', 'DrMundo', 'Ekko', 'Elise', 'Evelynn', 'Ezreal',
+    'Fiddlesticks', 'Fiora', 'Fizz', 'Galio', 'Gangplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Gwen',
+    'Hecarim', 'Heimerdinger', 'Hwei', 'Illaoi', 'Irelia', 'Ivern', 'Janna', 'JarvanIV', 'Jax', 'Jayce',
+    'Jhin', 'Jinx', 'Kaisa', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina', 'Kayle', 'Kayn',
+    'Kennen', 'Khazix', 'Kindred', 'Kled', 'KogMaw', 'Leblanc', 'LeeSin', 'Leona', 'Lillia', 'Lissandra',
+    'Lucian', 'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai', 'MasterYi', 'Milio', 'MissFortune',
+    'Mordekaiser', 'Morgana', 'Naafiri', 'Nami', 'Nasus', 'Nautilus', 'Neeko', 'Nidalee', 'Nilah',
+    'Nocturne', 'Nunu', 'Olaf', 'Orianna', 'Ornn', 'Pantheon', 'Poppy', 'Pyke', 'Qiyana', 'Quinn',
+    'Rakan', 'Rammus', 'RekSai', 'Rell', 'Renata', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze',
+    'Samira', 'Sejuani', 'Senna', 'Seraphine', 'Sett', 'Shaco', 'Shen', 'Shyvana', 'Singed', 'Sion',
+    'Sivir', 'Skarner', 'Smolder', 'Sona', 'Soraka', 'Swain', 'Sylas', 'Syndra', 'TahmKench', 'Taliyah',
+    'Talon', 'Taric', 'Teemo', 'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'TwistedFate', 'Twitch',
+    'Udyr', 'Urgot', 'Varus', 'Vayne', 'Veigar', 'Velkoz', 'Vex', 'Vi', 'Viego', 'Viktor', 'Vladimir',
+    'Volibear', 'Warwick', 'Wukong', 'Xayah', 'Xerath', 'XinZhao', 'Yasuo', 'Yone', 'Yorick', 'Yuumi',
+    'Zac', 'Zed', 'Zeri', 'Ziggs', 'Zilean', 'Zoe', 'Zyra'
+];
+
+function getRandomChampions(): [string, string] {
+    const c1 = CHAMPIONS[Math.floor(Math.random() * CHAMPIONS.length)];
+    const c2 = CHAMPIONS[Math.floor(Math.random() * CHAMPIONS.length)];
+    return [c1, c2];
+}
+
+function generateMatchesForGroup(groupId: string, teamIds: string[], count: number = 4): Match[] {
+    const matches: Match[] = [];
+    for (let i = 1; i <= count; i++) {
+        // Shuffle team IDs for random placement
+        const shuffled = [...teamIds].sort(() => 0.5 - Math.random());
+        const placements: MatchPlacement[] = shuffled.map((tid, index) => ({
+            teamId: tid,
+            placement: index + 1,
+            champions: getRandomChampions()
+        }));
+        matches.push({
+            id: `${groupId}-m${i}`,
+            gameNumber: i,
+            placements
+        });
+    }
+    return matches;
+}
+
 export const GROUPS: Record<string, Group> = {
     // --- PHASE 0: PLAY-INS (32 Teams) ---
     'p0-a': {
@@ -87,93 +133,84 @@ export const GROUPS: Record<string, Group> = {
         phase: 0,
         name: 'Group A',
         teamIds: ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'],
-        matches: [
-            {
-                id: 'm1',
-                gameNumber: 1,
-                placements: [
-                    { teamId: 't1', placement: 1, champions: ['Ahri', 'Viego'] },
-                    { teamId: 't2', placement: 2 },
-                    { teamId: 't3', placement: 3 },
-                    { teamId: 't4', placement: 4 },
-                    { teamId: 't5', placement: 5 },
-                    { teamId: 't6', placement: 6 },
-                    { teamId: 't7', placement: 7 },
-                    { teamId: 't8', placement: 8 },
-                ]
-            }
-        ]
+        matches: generateMatchesForGroup('p0-a', ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'])
     },
     'p0-b': {
         id: 'p0-b',
         phase: 0,
         name: 'Group B',
         teamIds: ['t9', 't10', 't11', 't12', 't13', 't14', 't15', 't16'],
-        matches: []
+        matches: generateMatchesForGroup('p0-b', ['t9', 't10', 't11', 't12', 't13', 't14', 't15', 't16'])
     },
     'p0-c': {
         id: 'p0-c',
         phase: 0,
         name: 'Group C',
         teamIds: ['t17', 't18', 't19', 't20', 't21', 't22', 't23', 't24'],
-        matches: []
+        matches: generateMatchesForGroup('p0-c', ['t17', 't18', 't19', 't20', 't21', 't22', 't23', 't24'])
     },
     'p0-d': {
         id: 'p0-d',
         phase: 0,
         name: 'Group D',
         teamIds: ['t25', 't26', 't27', 't28', 't29', 't30', 't31', 't32'],
-        matches: []
+        matches: generateMatchesForGroup('p0-d', ['t25', 't26', 't27', 't28', 't29', 't30', 't31', 't32'])
     },
 
     // --- PHASE 1: GROUP STAGE (16 Teams - Top 4 from each P0 group) ---
+    // Advancing: 4 from A, 4 from B -> p1-1 (Alpha)
+    // Advancing: 4 from C, 4 from D -> p1-2 (Beta)
     'p1-1': {
         id: 'p1-1',
         phase: 1,
-        name: 'Main Group Alpha',
-        teamIds: [], // To be populated with winners
-        matches: []
+        name: 'Main Group A',
+        teamIds: ['t1', 't2', 't3', 't4', 't9', 't10', 't11', 't12'],
+        matches: generateMatchesForGroup('p1-1', ['t1', 't2', 't3', 't4', 't9', 't10', 't11', 't12'])
     },
     'p1-2': {
         id: 'p1-2',
         phase: 1,
-        name: 'Main Group Beta',
-        teamIds: [],
-        matches: []
+        name: 'Main Group B',
+        teamIds: ['t17', 't18', 't19', 't20', 't25', 't26', 't27', 't28'],
+        matches: generateMatchesForGroup('p1-2', ['t17', 't18', 't19', 't20', 't25', 't26', 't27', 't28'])
     },
 
     // --- PHASE 2: BRACKET STAGE ---
+    // Upper: Top 4 from Alpha + Top 4 from Beta
     'p2-upper': {
         id: 'p2-upper',
         phase: 2,
         name: 'Upper Bracket',
-        teamIds: [],
-        matches: []
+        teamIds: ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'],
+        matches: generateMatchesForGroup('p2-upper', ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'])
     },
+    // Lower: Bottom 4 from Alpha + Bottom 4 from Beta
     'p2-lower': {
         id: 'p2-lower',
         phase: 2,
         name: 'Lower Bracket',
-        teamIds: [],
-        matches: []
+        teamIds: ['t9', 't10', 't11', 't12', 't25', 't26', 't27', 't28'],
+        matches: generateMatchesForGroup('p2-lower', ['t9', 't10', 't11', 't12', 't25', 't26', 't27', 't28'])
     },
 
     // --- PHASE 3: REDEMPTION ---
+    // Redemption: Bottom 4 from Upper + Top 4 from Lower
     'p3-redemption': {
         id: 'p3-redemption',
         phase: 3,
         name: 'Redemption Group',
-        teamIds: [],
-        matches: []
+        teamIds: ['t17', 't18', 't19', 't20', 't9', 't10', 't11', 't12'],
+        matches: generateMatchesForGroup('p3-redemption', ['t17', 't18', 't19', 't20', 't9', 't10', 't11', 't12'])
     },
 
     // --- PHASE 4: FINALS ---
+    // Finals: Top 4 from Upper + Top 4 from Redemption
     'p4-final': {
         id: 'p4-final',
         phase: 4,
         name: 'Grand Finals',
-        teamIds: [],
-        matches: []
+        teamIds: ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'],
+        matches: generateMatchesForGroup('p4-final', ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'], 6) // Finals usually 6 games
     }
 };
 
@@ -221,4 +258,3 @@ export function getTeamStats(groupId: string, teamId: string) {
 
     return { points, wins, matchesPlayed, history };
 }
-
