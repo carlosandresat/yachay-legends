@@ -3,6 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GROUPS, TEAMS, getTeamStats, PHASE_NAMES } from "@/lib/tournament-db";
 import { GroupStandingsTable } from "@/components/tournament/group-standings-table";
+import { TournamentFormatInfo } from "@/components/tournament/tournament-format-info";
 
 export function TournamentView() {
     const groupKeys = Object.keys(GROUPS);
@@ -10,7 +11,7 @@ export function TournamentView() {
 
     return (
         <Tabs defaultValue={phases[0].toString()} className="w-full">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 gap-4">
                 <TabsList className="w-full h-auto flex-wrap justify-start">
                     {phases.map((phase) => (
                         <TabsTrigger key={phase} value={phase.toString()} className="py-2">
@@ -18,6 +19,7 @@ export function TournamentView() {
                         </TabsTrigger>
                     ))}
                 </TabsList>
+                <TournamentFormatInfo />
             </div>
 
             {phases.map((phase) => {
