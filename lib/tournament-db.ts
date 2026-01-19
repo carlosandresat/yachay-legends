@@ -80,51 +80,291 @@ export const TEAMS: Record<string, Team> = {
     't32': { id: 't32', name: 'Gamers2', members: ['BrokenBlade', 'Yike'] },
 };
 
-// Helper to generate a full match with random placements and champions
-const CHAMPIONS = [
-    'Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Aphelios', 'Ashe', 'AurelionSol',
-    'Azir', 'Bard', 'Belveth', 'Blitzcrank', 'Brand', 'Braum', 'Briar', 'Caitlyn', 'Camille', 'Cassiopeia',
-    'Chogath', 'Corki', 'Darius', 'Diana', 'Draven', 'DrMundo', 'Ekko', 'Elise', 'Evelynn', 'Ezreal',
-    'Fiddlesticks', 'Fiora', 'Fizz', 'Galio', 'Gangplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Gwen',
-    'Hecarim', 'Heimerdinger', 'Hwei', 'Illaoi', 'Irelia', 'Ivern', 'Janna', 'JarvanIV', 'Jax', 'Jayce',
-    'Jhin', 'Jinx', 'Kaisa', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina', 'Kayle', 'Kayn',
-    'Kennen', 'Khazix', 'Kindred', 'Kled', 'KogMaw', 'Leblanc', 'LeeSin', 'Leona', 'Lillia', 'Lissandra',
-    'Lucian', 'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai', 'MasterYi', 'Milio', 'MissFortune',
-    'Mordekaiser', 'Morgana', 'Naafiri', 'Nami', 'Nasus', 'Nautilus', 'Neeko', 'Nidalee', 'Nilah',
-    'Nocturne', 'Nunu', 'Olaf', 'Orianna', 'Ornn', 'Pantheon', 'Poppy', 'Pyke', 'Qiyana', 'Quinn',
-    'Rakan', 'Rammus', 'RekSai', 'Rell', 'Renata', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze',
-    'Samira', 'Sejuani', 'Senna', 'Seraphine', 'Sett', 'Shaco', 'Shen', 'Shyvana', 'Singed', 'Sion',
-    'Sivir', 'Skarner', 'Smolder', 'Sona', 'Soraka', 'Swain', 'Sylas', 'Syndra', 'TahmKench', 'Taliyah',
-    'Talon', 'Taric', 'Teemo', 'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'TwistedFate', 'Twitch',
-    'Udyr', 'Urgot', 'Varus', 'Vayne', 'Veigar', 'Velkoz', 'Vex', 'Vi', 'Viego', 'Viktor', 'Vladimir',
-    'Volibear', 'Warwick', 'Wukong', 'Xayah', 'Xerath', 'XinZhao', 'Yasuo', 'Yone', 'Yorick', 'Yuumi',
-    'Zac', 'Zed', 'Zeri', 'Ziggs', 'Zilean', 'Zoe', 'Zyra'
-];
+// --- STATIC DATA ---
 
-function getRandomChampions(): [string, string] {
-    const c1 = CHAMPIONS[Math.floor(Math.random() * CHAMPIONS.length)];
-    const c2 = CHAMPIONS[Math.floor(Math.random() * CHAMPIONS.length)];
-    return [c1, c2];
-}
+const STATIC_MATCHES: Record<string, Match[]> = {
+    // --- PHASE 0: PLAY-INS ---
+    'p0-a': [
+        {
+            id: 'p0-a-m1', gameNumber: 1, placements: [
+                { teamId: 't1', placement: 1, champions: ['Ahri', 'LeeSin'] }, { teamId: 't2', placement: 2 }, { teamId: 't3', placement: 3 }, { teamId: 't4', placement: 4 },
+                { teamId: 't5', placement: 5 }, { teamId: 't6', placement: 6 }, { teamId: 't7', placement: 7 }, { teamId: 't8', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-a-m2', gameNumber: 2, placements: [
+                { teamId: 't2', placement: 1, champions: ['Yasuo', 'Yone'] }, { teamId: 't1', placement: 2 }, { teamId: 't4', placement: 3 }, { teamId: 't3', placement: 4 },
+                { teamId: 't6', placement: 5 }, { teamId: 't5', placement: 6 }, { teamId: 't8', placement: 7 }, { teamId: 't7', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-a-m3', gameNumber: 3, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't2', placement: 3 }, { teamId: 't4', placement: 4 },
+                { teamId: 't5', placement: 5 }, { teamId: 't7', placement: 6 }, { teamId: 't6', placement: 7 }, { teamId: 't8', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-a-m4', gameNumber: 4, placements: [
+                { teamId: 't3', placement: 1 }, { teamId: 't4', placement: 2 }, { teamId: 't1', placement: 3 }, { teamId: 't2', placement: 4 },
+                { teamId: 't7', placement: 5 }, { teamId: 't6', placement: 6 }, { teamId: 't5', placement: 7 }, { teamId: 't8', placement: 8 }
+            ]
+        }
+    ],
+    'p0-b': [
+        {
+            id: 'p0-b-m1', gameNumber: 1, placements: [
+                { teamId: 't9', placement: 1 }, { teamId: 't10', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't12', placement: 4 },
+                { teamId: 't13', placement: 5 }, { teamId: 't14', placement: 6 }, { teamId: 't15', placement: 7 }, { teamId: 't16', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-b-m2', gameNumber: 2, placements: [
+                { teamId: 't11', placement: 1 }, { teamId: 't9', placement: 2 }, { teamId: 't12', placement: 3 }, { teamId: 't10', placement: 4 },
+                { teamId: 't14', placement: 5 }, { teamId: 't13', placement: 6 }, { teamId: 't16', placement: 7 }, { teamId: 't15', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-b-m3', gameNumber: 3, placements: [
+                { teamId: 't10', placement: 1 }, { teamId: 't12', placement: 2 }, { teamId: 't9', placement: 3 }, { teamId: 't11', placement: 4 },
+                { teamId: 't13', placement: 5 }, { teamId: 't15', placement: 6 }, { teamId: 't14', placement: 7 }, { teamId: 't16', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-b-m4', gameNumber: 4, placements: [
+                { teamId: 't9', placement: 1 }, { teamId: 't11', placement: 2 }, { teamId: 't10', placement: 3 }, { teamId: 't12', placement: 4 },
+                { teamId: 't16', placement: 5 }, { teamId: 't14', placement: 6 }, { teamId: 't13', placement: 7 }, { teamId: 't15', placement: 8 }
+            ]
+        }
+    ],
+    'p0-c': [
+        {
+            id: 'p0-c-m1', gameNumber: 1, placements: [
+                { teamId: 't17', placement: 1 }, { teamId: 't18', placement: 2 }, { teamId: 't19', placement: 3 }, { teamId: 't20', placement: 4 },
+                { teamId: 't21', placement: 5 }, { teamId: 't22', placement: 6 }, { teamId: 't23', placement: 7 }, { teamId: 't24', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-c-m2', gameNumber: 2, placements: [
+                { teamId: 't18', placement: 1 }, { teamId: 't17', placement: 2 }, { teamId: 't20', placement: 3 }, { teamId: 't19', placement: 4 },
+                { teamId: 't22', placement: 5 }, { teamId: 't21', placement: 6 }, { teamId: 't24', placement: 7 }, { teamId: 't23', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-c-m3', gameNumber: 3, placements: [
+                { teamId: 't17', placement: 1 }, { teamId: 't19', placement: 2 }, { teamId: 't18', placement: 3 }, { teamId: 't20', placement: 4 },
+                { teamId: 't23', placement: 5 }, { teamId: 't21', placement: 6 }, { teamId: 't22', placement: 7 }, { teamId: 't24', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-c-m4', gameNumber: 4, placements: [
+                { teamId: 't20', placement: 1 }, { teamId: 't18', placement: 2 }, { teamId: 't17', placement: 3 }, { teamId: 't19', placement: 4 },
+                { teamId: 't21', placement: 5 }, { teamId: 't24', placement: 6 }, { teamId: 't23', placement: 7 }, { teamId: 't22', placement: 8 }
+            ]
+        }
+    ],
+    'p0-d': [
+        {
+            id: 'p0-d-m1', gameNumber: 1, placements: [
+                { teamId: 't25', placement: 1 }, { teamId: 't26', placement: 2 }, { teamId: 't27', placement: 3 }, { teamId: 't28', placement: 4 },
+                { teamId: 't29', placement: 5 }, { teamId: 't30', placement: 6 }, { teamId: 't31', placement: 7 }, { teamId: 't32', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-d-m2', gameNumber: 2, placements: [
+                { teamId: 't26', placement: 1 }, { teamId: 't25', placement: 2 }, { teamId: 't28', placement: 3 }, { teamId: 't27', placement: 4 },
+                { teamId: 't30', placement: 5 }, { teamId: 't29', placement: 6 }, { teamId: 't32', placement: 7 }, { teamId: 't31', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-d-m3', gameNumber: 3, placements: [
+                { teamId: 't25', placement: 1 }, { teamId: 't27', placement: 2 }, { teamId: 't26', placement: 3 }, { teamId: 't28', placement: 4 },
+                { teamId: 't31', placement: 5 }, { teamId: 't29', placement: 6 }, { teamId: 't30', placement: 7 }, { teamId: 't32', placement: 8 }
+            ]
+        },
+        {
+            id: 'p0-d-m4', gameNumber: 4, placements: [
+                { teamId: 't27', placement: 1 }, { teamId: 't25', placement: 2 }, { teamId: 't26', placement: 3 }, { teamId: 't28', placement: 4 },
+                { teamId: 't29', placement: 5 }, { teamId: 't32', placement: 6 }, { teamId: 't30', placement: 7 }, { teamId: 't31', placement: 8 }
+            ]
+        }
+    ],
 
-function generateMatchesForGroup(groupId: string, teamIds: string[], count: number = 4): Match[] {
-    const matches: Match[] = [];
-    for (let i = 1; i <= count; i++) {
-        // Shuffle team IDs for random placement
-        const shuffled = [...teamIds].sort(() => 0.5 - Math.random());
-        const placements: MatchPlacement[] = shuffled.map((tid, index) => ({
-            teamId: tid,
-            placement: index + 1,
-            champions: getRandomChampions()
-        }));
-        matches.push({
-            id: `${groupId}-m${i}`,
-            gameNumber: i,
-            placements
-        });
-    }
-    return matches;
-}
+    // --- PHASE 1: GROUP STAGE ---
+    'p1-1': [
+        {
+            id: 'p1-1-m1', gameNumber: 1, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't9', placement: 3 }, { teamId: 't4', placement: 4 },
+                { teamId: 't2', placement: 5 }, { teamId: 't10', placement: 6 }, { teamId: 't11', placement: 7 }, { teamId: 't12', placement: 8 }
+            ]
+        },
+        {
+            id: 'p1-1-m2', gameNumber: 2, placements: [
+                { teamId: 't3', placement: 1 }, { teamId: 't1', placement: 2 }, { teamId: 't2', placement: 3 }, { teamId: 't9', placement: 4 },
+                { teamId: 't4', placement: 5 }, { teamId: 't11', placement: 6 }, { teamId: 't10', placement: 7 }, { teamId: 't12', placement: 8 }
+            ]
+        },
+        {
+            id: 'p1-1-m3', gameNumber: 3, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't4', placement: 2 }, { teamId: 't3', placement: 3 }, { teamId: 't9', placement: 4 },
+                { teamId: 't2', placement: 5 }, { teamId: 't10', placement: 6 }, { teamId: 't12', placement: 7 }, { teamId: 't11', placement: 8 }
+            ]
+        },
+        {
+            id: 'p1-1-m4', gameNumber: 4, placements: [
+                { teamId: 't2', placement: 1 }, { teamId: 't4', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't1', placement: 4 },
+                { teamId: 't3', placement: 5 }, { teamId: 't9', placement: 6 }, { teamId: 't12', placement: 7 }, { teamId: 't10', placement: 8 }
+            ]
+        }
+    ],
+    'p1-2': [
+        {
+            id: 'p1-2-m1', gameNumber: 1, placements: [
+                { teamId: 't17', placement: 1 }, { teamId: 't18', placement: 2 }, { teamId: 't19', placement: 3 }, { teamId: 't25', placement: 4 },
+                { teamId: 't20', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't27', placement: 7 }, { teamId: 't28', placement: 8 }
+            ]
+        },
+        {
+            id: 'p1-2-m2', gameNumber: 2, placements: [
+                { teamId: 't18', placement: 1 }, { teamId: 't20', placement: 2 }, { teamId: 't17', placement: 3 }, { teamId: 't26', placement: 4 },
+                { teamId: 't19', placement: 5 }, { teamId: 't25', placement: 6 }, { teamId: 't28', placement: 7 }, { teamId: 't27', placement: 8 }
+            ]
+        },
+        {
+            id: 'p1-2-m3', gameNumber: 3, placements: [
+                { teamId: 't17', placement: 1 }, { teamId: 't25', placement: 2 }, { teamId: 't18', placement: 3 }, { teamId: 't20', placement: 4 },
+                { teamId: 't19', placement: 5 }, { teamId: 't27', placement: 6 }, { teamId: 't28', placement: 7 }, { teamId: 't26', placement: 8 }
+            ]
+        },
+        {
+            id: 'p1-2-m4', gameNumber: 4, placements: [
+                { teamId: 't19', placement: 1 }, { teamId: 't20', placement: 2 }, { teamId: 't26', placement: 3 }, { teamId: 't17', placement: 4 },
+                { teamId: 't18', placement: 5 }, { teamId: 't25', placement: 6 }, { teamId: 't27', placement: 7 }, { teamId: 't28', placement: 8 }
+            ]
+        }
+    ],
+
+    // --- PHASE 2: BRACKETS ---
+    'p2-upper': [
+        {
+            id: 'p2-upper-m1', gameNumber: 1, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't17', placement: 3 }, { teamId: 't18', placement: 4 },
+                { teamId: 't4', placement: 5 }, { teamId: 't19', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't9', placement: 8 }
+            ]
+        },
+        {
+            id: 'p2-upper-m2', gameNumber: 2, placements: [
+                { teamId: 't3', placement: 1 }, { teamId: 't17', placement: 2 }, { teamId: 't1', placement: 3 }, { teamId: 't18', placement: 4 },
+                { teamId: 't9', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't19', placement: 8 }
+            ]
+        },
+        {
+            id: 'p2-upper-m3', gameNumber: 3, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't18', placement: 2 }, { teamId: 't3', placement: 3 }, { teamId: 't17', placement: 4 },
+                { teamId: 't4', placement: 5 }, { teamId: 't20', placement: 6 }, { teamId: 't9', placement: 7 }, { teamId: 't19', placement: 8 }
+            ]
+        },
+        {
+            id: 'p2-upper-m4', gameNumber: 4, placements: [
+                { teamId: 't17', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't1', placement: 3 }, { teamId: 't18', placement: 4 },
+                { teamId: 't9', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't19', placement: 7 }, { teamId: 't20', placement: 8 }
+            ]
+        }
+    ],
+    'p2-lower': [
+        {
+            id: 'p2-lower-m1', gameNumber: 1, placements: [
+                { teamId: 't2', placement: 1 }, { teamId: 't11', placement: 2 }, { teamId: 't10', placement: 3 }, { teamId: 't25', placement: 4 },
+                { teamId: 't12', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't27', placement: 7 }, { teamId: 't28', placement: 8 }
+            ]
+        },
+        {
+            id: 'p2-lower-m2', gameNumber: 2, placements: [
+                { teamId: 't11', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't25', placement: 3 }, { teamId: 't10', placement: 4 },
+                { teamId: 't12', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't28', placement: 7 }, { teamId: 't27', placement: 8 }
+            ]
+        },
+        {
+            id: 'p2-lower-m3', gameNumber: 3, placements: [
+                { teamId: 't2', placement: 1 }, { teamId: 't10', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't12', placement: 4 },
+                { teamId: 't25', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't27', placement: 7 }, { teamId: 't28', placement: 8 }
+            ]
+        },
+        {
+            id: 'p2-lower-m4', gameNumber: 4, placements: [
+                { teamId: 't12', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't25', placement: 4 },
+                { teamId: 't10', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't28', placement: 7 }, { teamId: 't27', placement: 8 }
+            ]
+        }
+    ],
+
+    // --- PHASE 3: REDEMPTION ---
+    'p3-redemption': [
+        {
+            id: 'p3-red', gameNumber: 1, placements: [
+                { teamId: 't2', placement: 1 }, { teamId: 't4', placement: 2 }, { teamId: 't9', placement: 3 }, { teamId: 't11', placement: 4 },
+                { teamId: 't19', placement: 5 }, { teamId: 't20', placement: 6 }, { teamId: 't10', placement: 7 }, { teamId: 't12', placement: 8 }
+            ]
+        },
+        {
+            id: 'p3-red', gameNumber: 2, placements: [
+                { teamId: 't9', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't4', placement: 3 }, { teamId: 't11', placement: 4 },
+                { teamId: 't19', placement: 5 }, { teamId: 't12', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't10', placement: 8 }
+            ]
+        },
+        {
+            id: 'p3-red', gameNumber: 3, placements: [
+                { teamId: 't2', placement: 1 }, { teamId: 't11', placement: 2 }, { teamId: 't4', placement: 3 }, { teamId: 't9', placement: 4 },
+                { teamId: 't10', placement: 5 }, { teamId: 't19', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't12', placement: 8 }
+            ]
+        },
+        {
+            id: 'p3-red', gameNumber: 4, placements: [
+                { teamId: 't4', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't9', placement: 3 }, { teamId: 't11', placement: 4 },
+                { teamId: 't19', placement: 5 }, { teamId: 't12', placement: 6 }, { teamId: 't10', placement: 7 }, { teamId: 't20', placement: 8 }
+            ]
+        }
+    ],
+
+    // --- PHASE 4: FINALS ---
+    'p4-final': [
+        {
+            id: 'p4-final-m1', gameNumber: 1, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't17', placement: 3 }, { teamId: 't2', placement: 4 },
+                { teamId: 't18', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't9', placement: 7 }, { teamId: 't11', placement: 8 }
+            ]
+        },
+        {
+            id: 'p4-final-m2', gameNumber: 2, placements: [
+                { teamId: 't3', placement: 1 }, { teamId: 't1', placement: 2 }, { teamId: 't2', placement: 3 }, { teamId: 't17', placement: 4 },
+                { teamId: 't4', placement: 5 }, { teamId: 't18', placement: 6 }, { teamId: 't11', placement: 7 }, { teamId: 't9', placement: 8 }
+            ]
+        },
+        {
+            id: 'p4-final-m3', gameNumber: 3, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't3', placement: 3 }, { teamId: 't18', placement: 4 },
+                { teamId: 't17', placement: 5 }, { teamId: 't9', placement: 6 }, { teamId: 't4', placement: 7 }, { teamId: 't11', placement: 8 }
+            ]
+        },
+        {
+            id: 'p4-final-m4', gameNumber: 4, placements: [
+                { teamId: 't2', placement: 1 }, { teamId: 't1', placement: 2 }, { teamId: 't17', placement: 3 }, { teamId: 't3', placement: 4 },
+                { teamId: 't4', placement: 5 }, { teamId: 't18', placement: 6 }, { teamId: 't11', placement: 7 }, { teamId: 't9', placement: 8 }
+            ]
+        },
+        {
+            id: 'p4-final-m5', gameNumber: 5, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't3', placement: 3 }, { teamId: 't18', placement: 4 },
+                { teamId: 't17', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't9', placement: 7 }, { teamId: 't11', placement: 8 }
+            ]
+        },
+        {
+            id: 'p4-final-m6', gameNumber: 6, placements: [
+                { teamId: 't1', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't2', placement: 3 }, { teamId: 't17', placement: 4 },
+                { teamId: 't18', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't11', placement: 7 }, { teamId: 't9', placement: 8 }
+            ]
+        }
+    ]
+};
 
 export const GROUPS: Record<string, Group> = {
     // --- PHASE 0: PLAY-INS (32 Teams) ---
@@ -133,84 +373,78 @@ export const GROUPS: Record<string, Group> = {
         phase: 0,
         name: 'Group A',
         teamIds: ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'],
-        matches: generateMatchesForGroup('p0-a', ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'])
+        matches: STATIC_MATCHES['p0-a']
     },
     'p0-b': {
         id: 'p0-b',
         phase: 0,
         name: 'Group B',
         teamIds: ['t9', 't10', 't11', 't12', 't13', 't14', 't15', 't16'],
-        matches: generateMatchesForGroup('p0-b', ['t9', 't10', 't11', 't12', 't13', 't14', 't15', 't16'])
+        matches: STATIC_MATCHES['p0-b']
     },
     'p0-c': {
         id: 'p0-c',
         phase: 0,
         name: 'Group C',
         teamIds: ['t17', 't18', 't19', 't20', 't21', 't22', 't23', 't24'],
-        matches: generateMatchesForGroup('p0-c', ['t17', 't18', 't19', 't20', 't21', 't22', 't23', 't24'])
+        matches: STATIC_MATCHES['p0-c']
     },
     'p0-d': {
         id: 'p0-d',
         phase: 0,
         name: 'Group D',
         teamIds: ['t25', 't26', 't27', 't28', 't29', 't30', 't31', 't32'],
-        matches: generateMatchesForGroup('p0-d', ['t25', 't26', 't27', 't28', 't29', 't30', 't31', 't32'])
+        matches: STATIC_MATCHES['p0-d']
     },
 
     // --- PHASE 1: GROUP STAGE (16 Teams - Top 4 from each P0 group) ---
-    // Advancing: 4 from A, 4 from B -> p1-1 (Alpha)
-    // Advancing: 4 from C, 4 from D -> p1-2 (Beta)
     'p1-1': {
         id: 'p1-1',
         phase: 1,
         name: 'Main Group A',
         teamIds: ['t1', 't2', 't3', 't4', 't9', 't10', 't11', 't12'],
-        matches: generateMatchesForGroup('p1-1', ['t1', 't2', 't3', 't4', 't9', 't10', 't11', 't12'])
+        matches: STATIC_MATCHES['p1-1']
     },
     'p1-2': {
         id: 'p1-2',
         phase: 1,
         name: 'Main Group B',
         teamIds: ['t17', 't18', 't19', 't20', 't25', 't26', 't27', 't28'],
-        matches: generateMatchesForGroup('p1-2', ['t17', 't18', 't19', 't20', 't25', 't26', 't27', 't28'])
+        matches: STATIC_MATCHES['p1-2']
     },
 
     // --- PHASE 2: BRACKET STAGE ---
-    // Upper: Top 4 from Alpha + Top 4 from Beta
     'p2-upper': {
         id: 'p2-upper',
         phase: 2,
         name: 'Upper Bracket',
-        teamIds: ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'],
-        matches: generateMatchesForGroup('p2-upper', ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'])
+        teamIds: ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'], // Top 4 from P1-1 and P1-2 (Matches above result logic)
+        matches: STATIC_MATCHES['p2-upper']
     },
-    // Lower: Bottom 4 from Alpha + Bottom 4 from Beta
     'p2-lower': {
         id: 'p2-lower',
         phase: 2,
         name: 'Lower Bracket',
         teamIds: ['t9', 't10', 't11', 't12', 't25', 't26', 't27', 't28'],
-        matches: generateMatchesForGroup('p2-lower', ['t9', 't10', 't11', 't12', 't25', 't26', 't27', 't28'])
+        matches: STATIC_MATCHES['p2-lower']
     },
 
     // --- PHASE 3: REDEMPTION ---
-    // Redemption: Bottom 4 from Upper + Top 4 from Lower
     'p3-redemption': {
         id: 'p3-redemption',
         phase: 3,
         name: 'Redemption Group',
-        teamIds: ['t17', 't18', 't19', 't20', 't9', 't10', 't11', 't12'],
-        matches: generateMatchesForGroup('p3-redemption', ['t17', 't18', 't19', 't20', 't9', 't10', 't11', 't12'])
+        teamIds: ['t2', 't4', 't9', 't11', 't10', 't12', 't19', 't20'], // Mix of P2 losers/winners (adjusted to match logic)
+        matches: STATIC_MATCHES['p3-redemption']
     },
 
     // --- PHASE 4: FINALS ---
-    // Finals: Top 4 from Upper + Top 4 from Redemption
     'p4-final': {
         id: 'p4-final',
         phase: 4,
         name: 'Grand Finals',
-        teamIds: ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'],
-        matches: generateMatchesForGroup('p4-final', ['t1', 't2', 't3', 't4', 't17', 't18', 't19', 't20'], 6) // Finals usually 6 games
+        teamIds: ['t1', 't3', 't17', 't18', 't2', 't4', 't9', 't11'], // Top 8 Finalists
+        matches: STATIC_MATCHES['p4-final']
     }
 };
 
