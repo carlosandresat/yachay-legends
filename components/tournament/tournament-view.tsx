@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GROUPS, TEAMS, getTeamStats, PHASE_NAMES } from "@/lib/tournament-db";
 import { GroupStandingsTable } from "@/components/tournament/group-standings-table";
 import { TournamentFormatInfo } from "@/components/tournament/tournament-format-info";
+import { RankHistoryChart } from "@/components/tournament/charts/rank-history-chart";
 
 export function TournamentView() {
     const groupKeys = Object.keys(GROUPS);
@@ -49,8 +50,14 @@ export function TournamentView() {
                                 teamStats.sort((a, b) => b.stats.points - a.stats.points);
 
                                 return (
-                                    <TabsContent key={key} value={key} className="mt-4 border rounded-md">
-                                        <GroupStandingsTable group={group} teamStats={teamStats} />
+                                    <TabsContent key={key} value={key} className="mt-4 space-y-4">
+                                        <div className="border rounded-md">
+                                            <GroupStandingsTable group={group} teamStats={teamStats} />
+                                        </div>
+                                        {/* Only show chart if there is history data */}
+                                        {teamStats.some(t => t.stats.history.length > 0) && (
+                                            <RankHistoryChart data={teamStats} />
+                                        )}
                                     </TabsContent>
                                 );
                             })}
