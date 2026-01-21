@@ -29,10 +29,12 @@ interface GroupStandingsTableProps {
 }
 
 export function GroupStandingsTable({ group, teamStats }: GroupStandingsTableProps) {
+    const formatInfo = getFormatInfo(group);
+
     return (
         <Table>
             <TableCaption>
-                Details for {group.name} - Top 4 advance
+                Details for {group.name} - {formatInfo}
             </TableCaption>
             <TableHeader>
                 <TableRow>
@@ -60,4 +62,24 @@ export function GroupStandingsTable({ group, teamStats }: GroupStandingsTablePro
             </TableBody>
         </Table>
     );
+}
+
+function getFormatInfo(group: Group): string {
+    switch (group.phase) {
+        case 0: // Play-ins
+            return "Top 4 advance to Group Stage";
+        case 1: // Group Stage
+            return "Top 4 → Upper Bracket, Bot 4 → Lower Bracket";
+        case 2: // Bracket Stage
+            if (group.name.includes("Upper")) {
+                return "Top 4 → Grand Finals, Bot 4 → Redemption";
+            }
+            return "Top 4 → Redemption, Bot 4 → Eliminated";
+        case 3: // Redemption
+            return "Top 4 → Grand Finals, Bot 4 → Eliminated";
+        case 4: // Grand Finals
+            return "Top 1 → Champion";
+        default:
+            return "Top 4 advance";
+    }
 }
