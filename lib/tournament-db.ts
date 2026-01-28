@@ -248,50 +248,50 @@ const STATIC_MATCHES: Record<string, Match[]> = {
         {
             id: 'p2-upper-m1', gameNumber: 1, placements: [
                 { teamId: 't1', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't17', placement: 3 }, { teamId: 't18', placement: 4 },
-                { teamId: 't4', placement: 5 }, { teamId: 't19', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't9', placement: 8 }
+                { teamId: 't4', placement: 5 }, { teamId: 't19', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't2', placement: 8 }
             ]
         },
         {
             id: 'p2-upper-m2', gameNumber: 2, placements: [
                 { teamId: 't3', placement: 1 }, { teamId: 't17', placement: 2 }, { teamId: 't1', placement: 3 }, { teamId: 't18', placement: 4 },
-                { teamId: 't9', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't19', placement: 8 }
+                { teamId: 't2', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't20', placement: 7 }, { teamId: 't19', placement: 8 }
             ]
         },
         {
             id: 'p2-upper-m3', gameNumber: 3, placements: [
                 { teamId: 't1', placement: 1 }, { teamId: 't18', placement: 2 }, { teamId: 't3', placement: 3 }, { teamId: 't17', placement: 4 },
-                { teamId: 't4', placement: 5 }, { teamId: 't20', placement: 6 }, { teamId: 't9', placement: 7 }, { teamId: 't19', placement: 8 }
+                { teamId: 't4', placement: 5 }, { teamId: 't20', placement: 6 }, { teamId: 't2', placement: 7 }, { teamId: 't19', placement: 8 }
             ]
         },
         {
             id: 'p2-upper-m4', gameNumber: 4, placements: [
                 { teamId: 't17', placement: 1 }, { teamId: 't3', placement: 2 }, { teamId: 't1', placement: 3 }, { teamId: 't18', placement: 4 },
-                { teamId: 't9', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't19', placement: 7 }, { teamId: 't20', placement: 8 }
+                { teamId: 't2', placement: 5 }, { teamId: 't4', placement: 6 }, { teamId: 't19', placement: 7 }, { teamId: 't20', placement: 8 }
             ]
         }
     ],
     'p2-lower': [
         {
             id: 'p2-lower-m1', gameNumber: 1, placements: [
-                { teamId: 't2', placement: 1 }, { teamId: 't11', placement: 2 }, { teamId: 't10', placement: 3 }, { teamId: 't25', placement: 4 },
+                { teamId: 't9', placement: 1 }, { teamId: 't11', placement: 2 }, { teamId: 't10', placement: 3 }, { teamId: 't25', placement: 4 },
                 { teamId: 't12', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't27', placement: 7 }, { teamId: 't28', placement: 8 }
             ]
         },
         {
             id: 'p2-lower-m2', gameNumber: 2, placements: [
-                { teamId: 't11', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't25', placement: 3 }, { teamId: 't10', placement: 4 },
+                { teamId: 't11', placement: 1 }, { teamId: 't9', placement: 2 }, { teamId: 't25', placement: 3 }, { teamId: 't10', placement: 4 },
                 { teamId: 't12', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't28', placement: 7 }, { teamId: 't27', placement: 8 }
             ]
         },
         {
             id: 'p2-lower-m3', gameNumber: 3, placements: [
-                { teamId: 't2', placement: 1 }, { teamId: 't10', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't12', placement: 4 },
+                { teamId: 't9', placement: 1 }, { teamId: 't10', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't12', placement: 4 },
                 { teamId: 't25', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't27', placement: 7 }, { teamId: 't28', placement: 8 }
             ]
         },
         {
             id: 'p2-lower-m4', gameNumber: 4, placements: [
-                { teamId: 't12', placement: 1 }, { teamId: 't2', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't25', placement: 4 },
+                { teamId: 't12', placement: 1 }, { teamId: 't9', placement: 2 }, { teamId: 't11', placement: 3 }, { teamId: 't25', placement: 4 },
                 { teamId: 't10', placement: 5 }, { teamId: 't26', placement: 6 }, { teamId: 't28', placement: 7 }, { teamId: 't27', placement: 8 }
             ]
         }
