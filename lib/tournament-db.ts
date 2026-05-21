@@ -115,6 +115,46 @@ const STATIC_MATCHES: Record<string, Match[]> = {
                 { teamId: 't4', placement: 5, champions: ['MissFortune', 'Amumu', 'Yuumi'] },
                 { teamId: 't5', placement: 6, champions: ['Akali', 'XinZhao', 'Aphelios'] }
             ]
+        },
+        {
+            id: 'p0-a-m5', gameNumber: 5, placements: [
+                { teamId: 't1', placement: 1, champions: ['Ryze', 'LeeSin', 'Jayce'] },
+                { teamId: 't2', placement: 2, champions: ['Yasuo', 'Gragas', 'Yone'] },
+                { teamId: 't3', placement: 3, champions: ['Corki', 'Nidalee', 'KSante'] },
+                { teamId: 't4', placement: 4, champions: ['Taliyah', 'Senna', 'Jax'] },
+                { teamId: 't5', placement: 5, champions: ['Viktor', 'Sejuani', 'Gnar'] },
+                { teamId: 't6', placement: 6, champions: ['Ziggs', 'Jinx', 'KSante'] }
+            ]
+        },
+        {
+            id: 'p0-a-m6', gameNumber: 6, placements: [
+                { teamId: 't2', placement: 1, champions: ['Sylas', 'Rell', 'Ornn'] },
+                { teamId: 't3', placement: 2, champions: ['Taliyah', 'Karthus', 'Udyr'] },
+                { teamId: 't1', placement: 3, champions: ['Orianna', 'XinZhao', 'Gnar'] },
+                { teamId: 't4', placement: 4, champions: ['Ahri', 'Kalista', 'Renekton'] },
+                { teamId: 't6', placement: 5, champions: ['AurelionSol', 'Lucian', 'Jax'] },
+                { teamId: 't5', placement: 6, champions: ['Akali', 'Vi', 'Aatrox'] }
+            ]
+        },
+        {
+            id: 'p0-a-m7', gameNumber: 7, placements: [
+                { teamId: 't3', placement: 1, champions: ['Hwei', 'Viego', 'Rumble'] },
+                { teamId: 't1', placement: 2, champions: ['Azir', 'Maokai', 'Kennen'] },
+                { teamId: 't2', placement: 3, champions: ['Neeko', 'Braum', 'Kennen'] },
+                { teamId: 't5', placement: 4, champions: ['Hwei', 'Poppy', 'Ornn'] },
+                { teamId: 't4', placement: 5, champions: ['Veigar', 'Varus', 'Camille'] },
+                { teamId: 't6', placement: 6, champions: ['Taliyah', 'Aphelios', 'Renekton'] }
+            ]
+        },
+        {
+            id: 'p0-a-m8', gameNumber: 8, placements: [
+                { teamId: 't1', placement: 1, champions: ['LeBlanc', 'Sejuani', 'Aatrox'] },
+                { teamId: 't3', placement: 2, champions: ['Yone', 'Graves', 'Jax'] },
+                { teamId: 't2', placement: 3, champions: ['Ahri', 'Nautilus', 'Renekton'] },
+                { teamId: 't6', placement: 4, champions: ['Ziggs', 'Kalista', 'Ornn'] },
+                { teamId: 't4', placement: 5, champions: ['Syndra', 'Ashe', 'KSante'] },
+                { teamId: 't5', placement: 6, champions: ['Ryze', 'Viego', 'Jax'] }
+            ]
         }
     ],
     'p0-b': [
@@ -156,6 +196,46 @@ const STATIC_MATCHES: Record<string, Match[]> = {
                 { teamId: 't10', placement: 4, champions: ['ChoGath', 'Nunu', 'Ornn'] },
                 { teamId: 't11', placement: 5, champions: ['MissFortune', 'Amumu', 'Kalista'] },
                 { teamId: 't12', placement: 6, champions: ['Taliyah', 'Pantheon', 'RenataGlasc'] }
+            ]
+        },
+        {
+            id: 'p0-b-m5', gameNumber: 5, placements: [
+                { teamId: 't7', placement: 1, champions: ['Syndra', 'Graves', 'KSante'] },
+                { teamId: 't8', placement: 2, champions: ['Taliyah', 'Sejuani', 'Urgot'] },
+                { teamId: 't9', placement: 3, champions: ['Zeri', 'LeeSin', 'KSante'] },
+                { teamId: 't10', placement: 4, champions: ['Leblanc', 'Nidalee', 'Kennen'] },
+                { teamId: 't11', placement: 5, champions: ['Zeri', 'Sejuani', 'KSante'] },
+                { teamId: 't12', placement: 6, champions: ['Ashe', 'Rell', 'Ornn'] }
+            ]
+        },
+        {
+            id: 'p0-b-m6', gameNumber: 6, placements: [
+                { teamId: 't8', placement: 1, champions: ['Viktor', 'Brand', 'Olaf'] },
+                { teamId: 't9', placement: 2, champions: ['Aphelios', 'Viego', 'Aatrox'] },
+                { teamId: 't7', placement: 3, champions: ['Hwei', 'LeeSin', 'Jax'] },
+                { teamId: 't11', placement: 4, champions: ['Lucian', 'Viego', 'Aatrox'] },
+                { teamId: 't10', placement: 5, champions: ['Azir', 'LeeSin', 'Jax'] },
+                { teamId: 't12', placement: 6, champions: ['Kalista', 'Alistar', 'KSante'] }
+            ]
+        },
+        {
+            id: 'p0-b-m7', gameNumber: 7, placements: [
+                { teamId: 't9', placement: 1, champions: ['Ezreal', 'Sejuani', 'Renekton'] },
+                { teamId: 't7', placement: 2, champions: ['Azir', 'Maokai', 'Aatrox'] },
+                { teamId: 't8', placement: 3, champions: ['Ahri', 'Vi', 'Renekton'] },
+                { teamId: 't12', placement: 4, champions: ['Varus', 'Braum', 'Renekton'] },
+                { teamId: 't10', placement: 5, champions: ['Orianna', 'Graves', 'Aatrox'] },
+                { teamId: 't11', placement: 6, champions: ['Jhin', 'Maokai', 'Gnar'] }
+            ]
+        },
+        {
+            id: 'p0-b-m8', gameNumber: 8, placements: [
+                { teamId: 't7', placement: 1, champions: ['Orianna', 'Viego', 'Rumble'] },
+                { teamId: 't9', placement: 2, champions: ['Caitlyn', 'Maokai', 'Jax'] },
+                { teamId: 't8', placement: 3, champions: ['Azir', 'XinZhao', 'Gnar'] },
+                { teamId: 't10', placement: 4, champions: ['Taliyah', 'XinZhao', 'Renekton'] },
+                { teamId: 't11', placement: 5, champions: ['Ezreal', 'LeeSin', 'Jax'] },
+                { teamId: 't12', placement: 6, champions: ['Jinx', 'Thresh', 'Jax'] }
             ]
         }
     ],
@@ -199,6 +279,46 @@ const STATIC_MATCHES: Record<string, Match[]> = {
                 { teamId: 't17', placement: 5, champions: ['Senna', 'TahmKench', 'Rell'] },
                 { teamId: 't18', placement: 6, champions: ['Senna', 'TahmKench', 'Ezreal'] }
             ]
+        },
+        {
+            id: 'p0-c-m5', gameNumber: 5, placements: [
+                { teamId: 't13', placement: 1, champions: ['Aphelios', 'Viego', 'Renekton'] },
+                { teamId: 't14', placement: 2, champions: ['Draven', 'Maokai', 'KSante'] },
+                { teamId: 't15', placement: 3, champions: ['Azir', 'JarvanIV', 'Rumble'] },
+                { teamId: 't16', placement: 4, champions: ['Karma', 'Kalista', 'Ornn'] },
+                { teamId: 't17', placement: 5, champions: ['Hwei', 'LeeSin', 'Kennen'] },
+                { teamId: 't18', placement: 6, champions: ['Taliyah', 'Nidalee', 'KSante'] }
+            ]
+        },
+        {
+            id: 'p0-c-m6', gameNumber: 6, placements: [
+                { teamId: 't14', placement: 1, champions: ['Varus', 'Viego', 'Jax'] },
+                { teamId: 't15', placement: 2, champions: ['Orianna', 'XinZhao', 'KSante'] },
+                { teamId: 't13', placement: 3, champions: ['Zeri', 'Lillia', 'Kennen'] },
+                { teamId: 't17', placement: 4, champions: ['Azir', 'Sejuani', 'Jax'] },
+                { teamId: 't16', placement: 5, champions: ['Neeko', 'Aphelios', 'KSante'] },
+                { teamId: 't18', placement: 6, champions: ['Ahri', 'Vi', 'Jax'] }
+            ]
+        },
+        {
+            id: 'p0-c-m7', gameNumber: 7, placements: [
+                { teamId: 't15', placement: 1, champions: ['Hwei', 'Brand', 'Aatrox'] },
+                { teamId: 't13', placement: 2, champions: ['Lucian', 'LeeSin', 'Ornn'] },
+                { teamId: 't14', placement: 3, champions: ['Senna', 'Sejuani', 'Renekton'] },
+                { teamId: 't18', placement: 4, champions: ['Syndra', 'LeeSin', 'Kennen'] },
+                { teamId: 't16', placement: 5, champions: ['Orianna', 'Zeri', 'Aatrox'] },
+                { teamId: 't17', placement: 6, champions: ['Leblanc', 'Viego', 'Rumble'] }
+            ]
+        },
+        {
+            id: 'p0-c-m8', gameNumber: 8, placements: [
+                { teamId: 't13', placement: 1, champions: ['Caitlyn', 'XinZhao', 'Aatrox'] },
+                { teamId: 't15', placement: 2, champions: ['Taliyah', 'Maokai', 'Jax'] },
+                { teamId: 't14', placement: 3, champions: ['Ezreal', 'Graves', 'Gnar'] },
+                { teamId: 't16', placement: 4, champions: ['Syndra', 'Varus', 'Renekton'] },
+                { teamId: 't17', placement: 5, champions: ['Orianna', 'Graves', 'Aatrox'] },
+                { teamId: 't18', placement: 6, champions: ['Neeko', 'XinZhao', 'Aatrox'] }
+            ]
         }
     ],
     'p0-d': [
@@ -240,6 +360,46 @@ const STATIC_MATCHES: Record<string, Match[]> = {
                 { teamId: 't22', placement: 4, champions: ['Taliyah', 'Pantheon', 'Yasuo'] },
                 { teamId: 't23', placement: 5, champions: ['Senna', 'TahmKench', 'Malphite'] },
                 { teamId: 't24', placement: 6, champions: ['MissFortune', 'Amumu', 'Renekton'] }
+            ]
+        },
+        {
+            id: 'p0-d-m5', gameNumber: 5, placements: [
+                { teamId: 't19', placement: 1, champions: ['Tristana', 'Rell', 'Ornn'] },
+                { teamId: 't20', placement: 2, champions: ['Hwei', 'Brand', 'Olaf'] },
+                { teamId: 't21', placement: 3, champions: ['Syndra', 'LeeSin', 'Kennen'] },
+                { teamId: 't22', placement: 4, champions: ['Lucian', 'Nami', 'KSante'] },
+                { teamId: 't23', placement: 5, champions: ['Azir', 'Sejuani', 'Renekton'] },
+                { teamId: 't24', placement: 6, champions: ['Neeko', 'Vi', 'Ornn'] }
+            ]
+        },
+        {
+            id: 'p0-d-m6', gameNumber: 6, placements: [
+                { teamId: 't20', placement: 1, champions: ['Taliyah', 'Sejuani', 'Darius'] },
+                { teamId: 't21', placement: 2, champions: ['Azir', 'XinZhao', 'Aatrox'] },
+                { teamId: 't19', placement: 3, champions: ['Jinx', 'Thresh', 'Aatrox'] },
+                { teamId: 't23', placement: 4, champions: ['Orianna', 'Viego', 'Gnar'] },
+                { teamId: 't22', placement: 5, champions: ['Zeri', 'Lulu', 'Renekton'] },
+                { teamId: 't24', placement: 6, champions: ['Ahri', 'XinZhao', 'Aatrox'] }
+            ]
+        },
+        {
+            id: 'p0-d-m7', gameNumber: 7, placements: [
+                { teamId: 't21', placement: 1, champions: ['Ryze', 'Viego', 'Jax'] },
+                { teamId: 't19', placement: 2, champions: ['Kaisa', 'Nautilus', 'Renekton'] },
+                { teamId: 't20', placement: 3, champions: ['Orianna', 'Maokai', 'Gnar'] },
+                { teamId: 't24', placement: 4, champions: ['Veigar', 'Maokai', 'Renekton'] },
+                { teamId: 't22', placement: 5, champions: ['Ezreal', 'Karma', 'Ornn'] },
+                { teamId: 't23', placement: 6, champions: ['Hwei', 'LeeSin', 'Aatrox'] }
+            ]
+        },
+        {
+            id: 'p0-d-m8', gameNumber: 8, placements: [
+                { teamId: 't19', placement: 1, champions: ['Caitlyn', 'Lux', 'KSante'] },
+                { teamId: 't21', placement: 2, champions: ['Leblanc', 'Graves', 'Gnar'] },
+                { teamId: 't20', placement: 3, champions: ['Ahri', 'Vi', 'Renekton'] },
+                { teamId: 't22', placement: 4, champions: ['Aphelios', 'Thresh', 'Jax'] },
+                { teamId: 't23', placement: 5, champions: ['Taliyah', 'Graves', 'Jax'] },
+                { teamId: 't24', placement: 6, champions: ['Leblanc', 'Sejuani', 'Jax'] }
             ]
         }
     ],
