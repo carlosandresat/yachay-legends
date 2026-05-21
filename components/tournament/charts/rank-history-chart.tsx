@@ -182,8 +182,8 @@ function GenericRankChart({
                 <YAxis
                     yAxisId="left"
                     reversed
-                    domain={[1, 8]}
-                    tickCount={8}
+                    domain={[1, 6]}
+                    tickCount={6}
                     tickLine={false}
                     axisLine={false}
                     orientation="left"
@@ -191,12 +191,12 @@ function GenericRankChart({
                     tickFormatter={(value) => initialRankMap.get(value) || ""}
                     interval={0}
                 />
-                {/* Right Y-Axis: Ranks (1-8) */}
+                {/* Right Y-Axis: Ranks (1-6) */}
                 <YAxis
                     yAxisId="right"
                     reversed
-                    domain={[1, 8]}
-                    tickCount={8}
+                    domain={[1, 6]}
+                    tickCount={6}
                     tickLine={false}
                     axisLine={false}
                     orientation="right"

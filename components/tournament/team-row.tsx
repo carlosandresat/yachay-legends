@@ -16,7 +16,7 @@ type TeamStats = {
   history: {
     gameNumber: number;
     placement: number;
-    champions?: [string, string];
+    champions?: [string, string, string];
   }[];
 };
 
@@ -36,7 +36,7 @@ export function TeamRow({ rank, team, stats }: TeamRowProps) {
         <TableCell>
           <div className="flex flex-col">
             <span className="font-semibold">{team.name}</span>
-            <span className="text-xs text-muted-foreground">{team.members.join(" & ")}</span>
+            <span className="text-xs text-muted-foreground">{team.members.join(", ")}</span>
           </div>
         </TableCell>
         <TableCell className="text-center text-lg font-bold">{stats.points}</TableCell>
@@ -59,21 +59,16 @@ export function TeamRow({ rank, team, stats }: TeamRowProps) {
                       </CardHeader>
                       <CardContent className="p-3 pt-0">
                         {match.champions ? (
-                          <div className="flex items-center justify-evenly mt-2">
-                            <div className="flex flex-col items-center">
-                              <Avatar className="size-8">
-                                <AvatarImage src={`https://ddragon.leagueoflegends.com/cdn/15.1.1/img/champion/${match.champions[0]}.png`} />
-                                <AvatarFallback>?</AvatarFallback>
-                              </Avatar>
-                              <span className="text-[10px] truncate max-w-[50px]">{match.champions[0]}</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                              <Avatar className="size-8">
-                                <AvatarImage src={`https://ddragon.leagueoflegends.com/cdn/15.1.1/img/champion/${match.champions[1]}.png`} />
-                                <AvatarFallback>?</AvatarFallback>
-                              </Avatar>
-                              <span className="text-[10px] truncate max-w-[50px]">{match.champions[1]}</span>
-                            </div>
+                          <div className="flex items-center justify-evenly gap-1 mt-2">
+                            {match.champions.map((champ, idx) => (
+                              <div key={idx} className="flex flex-col items-center">
+                                <Avatar className="size-8">
+                                  <AvatarImage src={`https://ddragon.leagueoflegends.com/cdn/15.1.1/img/champion/${champ}.png`} />
+                                  <AvatarFallback>?</AvatarFallback>
+                                </Avatar>
+                                <span className="text-[10px] truncate max-w-[45px]">{champ}</span>
+                              </div>
+                            ))}
                           </div>
                         ) : (
                           <div className="text-xs text-muted-foreground text-center mt-2">

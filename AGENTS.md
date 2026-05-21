@@ -27,11 +27,11 @@
 
 ## Domain Model
 The core domain revolves around a multi-phase tournament:
-- **Phases:** 0: Play-ins, 1: Group Stage, 2: Bracket Stage, 3: Semifinals/Redemption, 4: Grand Finals.
-- **Teams:** Consist of an ID, Name, and members.
-- **Matches:** Contain game numbers and an array of `MatchPlacement` (which track team placement 1-8 and champions used).
-- **Groups:** A collection of matches for a specific set of teams in a given phase.
-- **Points:** Teams are awarded points based on their placement in a match (1st = 8pts, 8th = 1pt).
+- **Phases:** 0: Play-ins (24 Teams), 1: Group Stage (12 Teams), 2: Bracket Stage (12 Teams), 3: Semifinals/Redemption (6 Teams), 4: Grand Finals (6 Teams).
+- **Teams:** Consist of an ID, Name, and members (3 players per team).
+- **Matches:** Contain game numbers and an array of `MatchPlacement` (which track team placement 1-6 and 3 champions used).
+- **Groups:** A collection of matches for a specific set of teams in a given phase (6 teams per group).
+- **Points:** Teams are awarded points based on their placement in a match (1st = 6pts, 6th = 1pt).
 
 ## Guidelines for Agents
 1. **Styling:** Always use Tailwind CSS utility classes. When creating new UI components, leverage `shadcn/ui` and Radix primitives if applicable.
